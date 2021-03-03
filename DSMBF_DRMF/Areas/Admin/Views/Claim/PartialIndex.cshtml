@@ -1,0 +1,27 @@
+﻿@model IList<Claim>
+@{
+    var appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+@if (Model != null && Model.Count > 0)
+{
+    foreach (Claim C in Model)
+    {
+        <tr>
+            <td data-label="ClaimId"><a href="@appPath/Admin/Claim/View/@Security.EncryptandEncodeUrl(C.Id.ToString())">@C.Id</a></td>
+            <td data-label="AccountCode">@C.AccountCode</td>
+            <td data-label="ProgramType">@(C != null && C.ProgramType != null ? C.ProgramType.Name : "")</td>
+            <td data-label="InvoicePeriod">@(C.CompanyName != null ? C.CompanyName : "")</td>
+            <td data-label="InvoicePeriod">@C.InvoicePeriod</td>
+            <td data-label="InvoiceDate">@(C.InvoiceDate != null ? ((DateTime)@C.InvoiceDate).ToString("dd/MM/yyyy") : "")</td>
+            <td data-label="InvoiceAmount">@C.InvoiceAmount</td>
+            <td data-label="Status">@C.Status</td>
+            <td data-label="Quarter">@C.Quarter</td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="9" style="text-align:center">No records found.</td>
+    </tr>
+}

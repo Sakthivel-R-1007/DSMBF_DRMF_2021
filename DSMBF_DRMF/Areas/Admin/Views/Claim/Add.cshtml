@@ -1,0 +1,269 @@
+﻿
+@{
+    ViewBag.Title = "Add Claim";
+    // ViewBag.pagename = "log";
+    ViewBag.divclassname = (Model != null && Model.Id > 0 ? "edit_claim" : "submitclaim");
+    var appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+@model Claim
+@section Script{
+
+    <script type="text/javascript" defer src="@BundleTable.Bundles.ResolveBundleUrl("~/claim-addjs")"></script>
+    @*<script src="@ApplicationInstance.Application["ApplicationPath"]/Content/js/Admin/admin-claim-add.js" type="text/javascript"></script>*@
+}
+@section Style{
+    @Styles.Render("~/claimaddcss")
+    <style>
+        label.error {
+            color: red;
+        }
+
+        .editdocument {
+            height: 30px;
+        }
+    </style>
+}
+<div class="rightcontent">
+    <div class="pgheader"><img src="@appPath/Content/images/redarrow.png">Submit A Claim</div>
+    <div class="col1">
+        <p>
+            Below is a summary of all your previous claims as well as a section to submit a new claim. You have to submit a separate claim for each line of an invoice. All fields are compulsory. Please ensure that all compulsory fields are completed. In order to avoid delay in processing your claims please submit all relevant support documents.
+        </p>
+        <p>
+            Note: Attendance list required if claiming Food and Beverage.
+        </p>
+        <div class="groupTitle">Submit New Claim</div>
+    </div>
+    @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.EncryptedId)
+
+        <div class="col2">
+            <table class="newclaim" cellpadding="0" cellspacing="0" border="0">
+
+                <tr>
+                    <td>Account Code:</td>
+                    <td>
+                        @if (Model != null && Model.Id > 0)
+                        {
+                            @Html.TextBoxFor(m => m.AccountCode, new { type = "text", @class = "fieldStyle_small required", @readonly = "readonly" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(m => m.AccountCode, new { type = "text", @class = "fieldStyle_small required" })
+
+                        }
+                        <br /> @Html.ValidationMessageFor(m => m.AccountCode)
+
+                    </td>
+                </tr>
+                @*<tr>
+                        <td>Claim Date:</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.ClaimDate, new { type = "text", @class = "fieldStyle_small required" })
+                            <br /> @Html.ValidationMessageFor(m => m.ClaimDate)
+                        </td>
+                    </tr>*@
+                <tr>
+                    <td>Program Type:</td>
+                    <td>
+                        @Html.DropDownListFor(m => m.ProgramType.Id, (Model != null && Model.Id > 0 && ViewBag.ProgramTypes != null) ? new SelectList(ViewBag.ProgramTypes, "Id", "Name") : new SelectList(new List<ProgramType>(), "Id", "Name"), "Please Select", new { @class = "fieldStyle_small dropdownclass required" })<br />
+                        <br />@Html.ValidationMessageFor(m => m.ProgramType.Id)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Invoice Type :</td>
+                    <td>
+
+                        @Html.DropDownList("InvoiceType", (ViewBag.InvoiceTypeList != null) ? ViewBag.InvoiceTypeList as IEnumerable<SelectListItem> : null, "Please select", new { @class = "fieldStyle_small dropdownclass required" })<br />
+                        @Html.ValidationMessage("InvoiceType")
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Invoice #:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Invoice, new { type = "text", @class = "fieldStyle_small" })
+                        <br /> @Html.ValidationMessageFor(m => m.Invoice)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Invoice Amount with tax:</td>
+                    <td>
+                        @if (Model != null && Model.Id > 0)
+                        {
+                            @Html.TextBoxFor(m => m.InvoiceAmount, new { type = "text", @class = "fieldStyle_small required numonly", @readonly = "readonly" }) <span>RMB</span>
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(m => m.InvoiceAmount, new { type = "text", @class = "fieldStyle_small required numonly" }) <span>RMB</span>
+                        }
+                        <br />@Html.ValidationMessageFor(m => m.InvoiceAmount)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tax Percentage:</td>
+                    <td>
+                        @if (Model != null && Model.Id > 0)
+                        {
+                            @Html.TextBoxFor(m => m.TaxPercentage, new { type = "text", @class = "fieldStyle_small required numonly", @readonly = "readonly" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(m => m.TaxPercentage, new { type = "text", @class = "fieldStyle_small required numonly" })
+                        }
+                        <br />@Html.ValidationMessageFor(m => m.TaxPercentage)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tax Amount:</td>
+                    <td>
+                        @if (Model != null && Model.Id > 0)
+                        {
+                            @Html.TextBoxFor(m => m.TaxAmount, new { type = "text", @class = "fieldStyle_small required numonly", @readonly = "readonly" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(m => m.TaxAmount, new { type = "text", @class = "fieldStyle_small required numonly" })
+                        }
+                        <br />@Html.ValidationMessageFor(m => m.TaxAmount)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Invoice Amount with out tax:</td>
+                    <td>
+                        @if (Model != null && Model.Id > 0)
+                        {
+                            @Html.TextBoxFor(m => m.InvoiceAmountwithouttax, new { type = "text", @class = "fieldStyle_small required numonly", @readonly = "readonly" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(m => m.InvoiceAmountwithouttax, new { type = "text", @class = "fieldStyle_small required numonly" })
+                        }
+                        <br />@Html.ValidationMessageFor(m => m.InvoiceAmountwithouttax)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Invoice Date:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.InvoiceDate, "{0:MM-dd-yyyy}", new { type = "text", @class = "fieldStyle_small required" })
+                        <br />@Html.ValidationMessageFor(m => m.InvoiceDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Invoice Period:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.InvoicePeriod, new { type = "text", @class = "fieldStyle_small required" })
+                        <br />@Html.ValidationMessageFor(m => m.InvoicePeriod)
+                    </td>
+                </tr>
+                <tr>
+                    <td>PO#:</td>
+                    <td>
+                        @Html.TextBoxFor(m => m.PO, new { type = "text", @class = "fieldStyle_small required" })
+                        <br />@Html.ValidationMessageFor(m => m.PO)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quarter:</td>
+                    <td>
+                        @Html.DropDownListFor(m=>m.Quarter,
+                       new List<string> {
+                           "Q1"//, "Q2", "Q3", "Q4"
+                       }.Select(S => new SelectListItem {
+                           Text = S, Value = S
+                       }).ToList(), "Please Select", new { @class = "fieldStyle_small required" })<br />
+                        @Html.ValidationMessageFor(m => m.Quarter)
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col2" @(Model != null && Model.InvoiceDocuments != null && Model.InvoiceDocuments.Count() > 0 ? "" : "style=display:none")>
+
+            <div class="groupTitle">Previously Submitted Documents</div>
+            <p> Please select the attachments you want to re-attach to this claim </p>
+            <table class="category">
+                <thead>
+                    <tr>
+                        @*<td scope="col" style="display:none">Document Type</td>*@
+                        <td colspan="2" scope="col">File Name</td>
+                        <td scope="col">Re-attach</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (Model != null && Model.InvoiceDocuments != null && Model.InvoiceDocuments.Count > 0)
+                        {
+                            int i = 0;
+                            foreach (InvoiceDocument ID in Model.InvoiceDocuments)
+                            {
+                                <tr>
+                                    @*<td colspan="2" data-label="Document Type" style="display:none">
+                                            Invoice Documents
+                                        </td>*@
+                                    <td data-label="File Name" colspan="2">
+                                        @Html.HiddenFor(m => m.InvoiceDocuments[i].EncryptedId, new { Value = Security.Encrypt<long>(Model.InvoiceDocuments[i] != null ? Model.InvoiceDocuments[i].Id.ToString() : "") })
+                                        @Html.HiddenFor(m => m.InvoiceDocuments[i].Name)
+                                        @Html.HiddenFor(m => m.InvoiceDocuments[i].GUID)
+                                        @Html.HiddenFor(m => m.InvoiceDocuments[i].Extension)
+                                        <a target="_blank" href="@appPath/Resources/InvoiceDocuments/@(ID.GUID + ID.Extension)">
+                                            @ID.Name
+                                        </a>
+                                    </td>
+                                    <td data-label="Re-attach">
+                                        @Html.CheckBoxFor(m => m.InvoiceDocuments[i].ReAttach, new { @class = "ReAttach" })
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col3">
+            <div class="groupTitle">Required documents</div>
+        </div>
+        <div class="rightsub">
+            <span>Only file &lt;2MB is allowed.</span>
+            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;" class="requiredDocs">
+                <tr>
+                    <td valign="top">Invoice Documents</td>
+                    <td>
+
+                        @Html.TextBoxFor(m => m.files, "", new { @type = "file" })
+                        <br />  @Html.ValidationMessage("files", "")
+                        <p id="fp"></p>
+                    </td>
+                </tr>
+                <tr class="docs">
+                    <td></td>
+                    <td>
+                        <a href="javascript:void(0);" id="addmore">Add More</a>
+                    </td>
+                </tr>
+                @*<tr>
+                        <td colspan="2">
+                            <a href="javascript:void(0);" id="removeall" style="margin-left: 264px !important;">Remove All Documents</a>
+                        </td>
+                    </tr>*@
+
+            </table>
+            <div class="padding15"></div>
+            @if (ViewBag.Error != null)
+            {
+                <div style="color:red">@ViewBag.Error</div>
+                <div class="padding15"></div>
+            }
+            <a href="javascript:void(0);" id="submitBtn" class="commonBtn">Submit</a>
+
+        </div>
+    }
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+

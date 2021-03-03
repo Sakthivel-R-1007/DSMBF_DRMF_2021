@@ -1,0 +1,614 @@
+@charset "utf-8";
+/* CSS Document */
+@media only screen and (max-width: 1280px){
+	.wrapper{
+		border: 0px;
+	}
+}
+@media only screen and (max-width: 1199px){
+	
+	.login .col_1{
+		width: 95%;
+	}
+	.login .col_1 .leftcontent{
+		margin-left: 20px;
+		width: 50%;
+	}
+	.forgetpassword .col_1{
+		width: 95%;
+	}
+	.forgetpassword .col_1 .leftcontent{
+		margin-left: 20px;
+		width: 50%;
+	}
+	.firsttime .col_1{
+		width: 95%;
+	}
+	.firsttime .col_1 .leftcontent{
+		margin-left: 20px;
+		width: 50%;
+		padding-top: 50px;
+	}
+	.firsttime table.checks {
+    width: 80%;
+}
+	.firsttime table.details {
+    width: 80%;
+}
+	.login .col_2 {
+    width: 95%;
+}
+	.login .col_2 .rightcontent{
+		width: 65%;
+	}
+	.mainContents .rightcontent{
+	width: 65%;
+	}
+	
+	.qualifying .rightcontent .rightsub{
+	width: 68%;
+}
+}
+@media only screen and (max-width: 1020px){
+	.qualifying .rightcontent .leftsub .redbox {
+    width: 140px;
+    height: 50px;
+    padding: 50px 10px;
+    background-color: #bf0001;
+    border-radius: 15%;
+    text-align: center;
+    font-size: 21px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+	
+	.qualifying .rightcontent .leftsub {
+    width: 180px;
+    float: left;
+}
+	
+}
+@media only screen and (max-width: 960px){
+	.login .col_1{
+		width: 100%;
+	}
+	.forgetpassword .col_1{
+		width: 100%;
+	}
+	.firsttime .col_1{
+		width: 100%;
+	}
+	.footer .tools{
+		margin-left: 60px;
+	}
+		.mainContents .rightcontent{
+	width: 58%;
+}
+	.qualifying .rightcontent .rightsub{
+		width:60%;
+	}
+	
+	.qualifying table {
+		border: 0;
+  }
+.qualifying table caption {
+    font-size: 1.3em;
+  }
+.qualifying table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+.qualifying table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 2px;
+  }
+	.qualifying table th,
+.qualifying table td {
+	border-right: 0px;
+}
+.qualifying table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 12px;
+    /*text-align: right;*/
+	margin-left: 0px;
+padding-left: 120px;
+text-align: left;
+  }
+	.qualifying table td.center {
+    /*text-align: right;*/
+		text-align: left;
+  }
+ .qualifying table td:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+	 padding-right: 5px;
+	 margin-left: -115px;
+	 
+  }
+ .qualifying table td:last-child {
+    border-bottom: 0;
+}
+	
+	.login .col_1 .leftcontent{
+		padding-top: 25px;
+		width: 48%;
+	}
+	.ddfstatement table.category {
+		border: 0;
+  }
+.ddfstatement table.category caption {
+    font-size: 1.3em;
+  }
+.ddfstatement table.category thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+.ddfstatement table.category tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 2px;
+  }
+	.ddfstatement table.category th,
+.ddfstatement table.category td {
+	border-right: 0px;
+}
+.ddfstatement table.category td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 12px;
+    /*text-align: right;*/
+	margin-left: 0px;
+padding-left: 120px;
+text-align: left;
+  }
+	.ddfstatement table.category td.center {
+    /*text-align: right;*/
+		text-align: left;
+  }
+ .ddfstatement table.category td:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+	 padding-right: 5px;
+	 margin-left: -115px;
+	 width: 150px;
+	 
+  }
+ .ddfstatement table.category td:last-child {
+    border-bottom: 0;
+}
+	/*endddf*/
+	
+	.claim table.category {
+		border: 0;
+  }
+.claim table.category caption {
+    font-size: 1.3em;
+  }
+.claim table.category thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+.claim table.category tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 2px;
+  }
+	.claim table.category th,
+.claim table.category td {
+	border-right: 0px;
+}
+.claim table.category td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 12px;
+    /*text-align: right;*/
+	margin-left: 0px;
+padding-left: 120px;
+text-align: left;
+  }
+	.claim table.category td.center {
+    /*text-align: right;*/
+		text-align: left;
+  }
+ .claim table.category td:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+	 padding-right: 5px;
+	 margin-left: -115px;
+	 
+  }
+ .claim table.category td:last-child {
+    border-bottom: 0;
+}
+	.claim table.tblbudget, .upload table.tblbudget{
+		width: 100%;
+	}
+	
+	/*edit_claim*/
+	.edit_claim table.category {
+		border: 0;
+  }
+.edit_claim table.category caption {
+    font-size: 1.3em;
+  }
+.edit_claim table.category thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+.edit_claim table.category tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 2px;
+  }
+	.edit_claim table.category th,
+.edit_claim table.category td {
+	border-right: 0px;
+}
+.edit_claim table.category td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 12px;
+    /*text-align: right;*/
+	margin-left: 0px;
+padding-left: 120px;
+text-align: left;
+  }
+	.edit_claim table.category td.center {
+    /*text-align: right;*/
+		text-align: left;
+  }
+ .edit_claim table.category td:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;color: #D0121C;
+	 padding-right: 5px;
+	 margin-left: -115px;
+	 
+  }
+ .edit_claim table.category td:last-child {
+    border-bottom: 0;
+}
+
+}
+@media only screen and (max-width: 900px){
+	.login .col_2 .rightcontent{
+		width: 95%;
+		float: none;
+	}
+	.login .col_2 .leftcontent{
+		float: none;margin: 0 auto;
+		padding: 20px 0 0 0;
+	}
+	.login .col_2, .login .col_3{
+		width: 90%;
+	}
+}
+@media only screen and (max-width: 860px){
+		.footer .tools{
+		margin-left: 40px;
+	}
+	.login .col_1 .leftcontent{
+		padding-top: 25px;
+	}
+	.login .col_1 .leftcontent p strong{
+		font-size: 28px;
+	}
+	
+	.login .col_1 .leftcontent p span{
+		font-size: 24px;
+	}
+	.forgetpassword .col_1 .leftcontent{
+		padding-top: 25px;
+	}
+	.forgetpassword .col_1 .leftcontent p strong{
+		font-size: 28px;
+	}
+	
+	.forgetpassword .col_1 .leftcontent p span{
+		font-size: 24px;
+	}
+	.firsttime .col_1 .leftcontent{
+		padding-top: 50px;
+	}
+	.firsttime .col_1 .leftcontent p strong{
+		font-size: 28px;
+	}
+	.firsttime .col_1 .leftcontent p span{
+		font-size: 24px;
+	}
+	.firsttime table.checks {
+    width: 100%;
+}
+	.firsttime table.details {
+    width: 100%;
+}
+}
+@media only screen and (max-width: 830px){
+.leftsidebar{
+ position: absolute;
+	display: none;
+	right: 5px;
+	z-index: 9;
+	}
+	.leftsidebar.show{
+		display: block;
+		background-color: #D0121C;
+		width: 200px;
+		border: 3px solid #860005;
+	}
+	.leftsidebar ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+	}.leftsidebar ul li{
+		border-bottom-color: #860005;
+		
+	}
+	.leftsidebar ul li a{
+		color: #FFFFFF;
+	}
+	.mobilemenu{
+		display: block;
+		cursor: pointer;
+	}
+	.navbar .welcome {
+    padding: 0 20px;
+	margin: 0;
+    display: inline-block;
+}
+	.navbar .welcome span.mobile{
+	display: none;
+	}
+	.mainContents .rightcontent{
+		width: 90%;
+		margin: 0 auto;
+		float: none;
+		padding: 20px 10px;
+	}
+	.qualifying .rightcontent .rightsub {
+    width: 70%;
+	}
+}
+@media only screen and (max-width: 760px){
+	.login .col_1 .leftcontent{
+		float: none;
+		width: 90%;
+		margin: 0 auto;
+		padding: 20px 0;
+		text-align: center;
+	}
+	.login .col_1 .rightcontent{
+		float: none;
+		margin: 0 auto;
+		padding: 20px 0;
+	}
+	.login .col_1 .rightcontent img{
+		width: 100%;
+	}
+	.forgetpassword .col_1 .leftcontent{
+		float: none;
+		width: 90%;
+		margin: 0 auto;
+		padding: 20px 0;
+		text-align: center;
+	}
+	.forgetpassword .col_1 .rightcontent{
+		float: none;
+		margin: 0 auto;
+		padding: 20px 0;
+	}
+	.forgetpassword .col_1 .rightcontent img{
+		width: 100%;
+	}
+	.firsttime .col_1 .leftcontent{
+		float: none;
+		width: 90%;
+		margin: 0 auto;
+		padding: 20px 0;
+		text-align: center;
+	}
+	.firsttime .col_1 .rightcontent{
+		float: none;
+		margin: 0 auto;
+		padding: 20px 0;
+		
+	}
+	.firsttime .col_1 .rightcontent img{
+		width: 100%;
+	}
+	.qualifying .rightcontent .rightsub {
+    width: 60%;
+	}
+	.ddfstatement table.tblbudget{
+		width: 100%;
+	}
+	.rightcontent textarea.fieldStyle_small{
+	width: 90%;
+	}
+	.contact .rightcontent textarea.fieldStyle_small{
+		display: block;
+		width: 90%;
+	}
+	.contact .rightcontent input.fieldStyle_small[type="text"]{
+		width: 80%;
+	}
+}
+@media only screen and (max-width: 620px){
+	.footer{
+			height: 35px;
+		text-align: center;
+		padding: 10px;
+	}
+	.footer .copyright{
+		float: none;
+	}
+	.footer .tools{
+		float: none;
+		margin: 0 auto;
+		padding-top: 5px;
+	}
+	.banner img.desktop_banner{
+	display: none;
+}
+.banner img.mob_banner{
+	display: block;
+}
+	.flexslider .slides img.deskslider {
+	display: none;
+}
+.flexslider .slides img.mobslider {
+	width: 100%;
+	display: block;
+}
+	.firsttime table.details tr td{
+		display: block;
+	}
+
+	.submitclaim table.newclaim tr td{
+		display: block;
+	}
+	.submitclaim table.newclaim tr td tr td{
+		display: table-cell;
+	}
+	.edit_claim table.newclaim tr td{
+		display: block;
+	}
+	.tabs {
+		display: none;
+	}
+	.tab_drawer_heading {
+		background-color: #ccc;
+		color: #5f5f5f;
+		border-top: 1px solid #CCC;
+		margin: 0;
+		padding: 5px 20px;
+		display: block;
+		cursor: pointer;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	.d_active {
+		background-color: #666;
+		color: #fff;
+	}
+}
+@media only screen and (max-width: 500px){
+	
+	input.fieldStyle_small[type="text"]{
+		width: 90%;
+	}
+	.login .col_1 .rightcontent{
+		width: 80%;
+	}
+	.forgetpassword .col_1 .rightcontent{
+		width: 80%;
+	}
+	.forgetpassword .col_2 label.error{
+		padding-left: 0px;
+		padding-top: 20px;
+	}
+	.forgetpassword .col_2 .inputerror{
+		display: block;
+		margin: 10px 0;
+	}
+	.firsttime .col_1 .rightcontent{
+		width: 80%;
+	}
+	.qualifying .rightcontent .leftsub{
+		width: 100%;
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.qualifying .rightcontent .leftsub .redbox{
+		display: inline-block; margin: 10px;
+	}
+	.qualifying .rightcontent .rightsub {
+    width: 95%;
+    float: none;
+    margin: 0 auto;
+}
+	.submitclaim table.newclaim{
+	width: 100%;
+}
+	.submitclaim table.requiredDocs tr td{
+		display: block;
+		padding: 5px 0;
+	}
+	.details table tr td{
+	display: block;
+}
+	.contact .rightcontent .label{
+		display: block;
+	}
+	
+	br.brdesktop{
+	display: block;
+}
+		.upload table.tblbudget tr td{
+		display: block;
+			width: 100%;
+	}
+}
+
+
+@media only screen and (max-width: 386px){
+		.footer{
+		height: 55px;
+	}
+}

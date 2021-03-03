@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    // ViewBag.pagename = "log";
+    ViewBag.divclassname = "home";
+    string appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+@section Script{
+
+    <script type="text/javascript" defer src="@BundleTable.Bundles.ResolveBundleUrl("~/home-indexjs")"></script>
+    <script type="text/javascript">
+        $(function () {
+            SyntaxHighlighter.all();
+        });
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "fade",
+                start: function (slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
+
+
+
+}
+@section Style{
+    @Styles.Render("~/distributorcss")
+}
+<div class="rightcontent">
+    <div class="pgheader"><img src="@appPath/Content/images/redarrow.png">My Home</div>
+
+    <section class="slider">
+        <div class="flexslider">
+            <ul class="slides">
+                <li>
+                    <img class="deskslider" src="@appPath/Content/images/bannerslide1.jpg" /><img class="mobslider" src="@ApplicationInstance.Application["ApplicationPath"]/Content/images/mobslide1.jpg">
+                    <p class="flex-caption">Earning rate reward Flagship and Premium Sales</p>
+                </li>
+                <li>
+                    <img class="deskslider" src="@appPath/Content/images/bannerslide2.jpg" /><img class="mobslider" src="@ApplicationInstance.Application["ApplicationPath"]/Content/images/mobslide2.jpg">
+                    <p class="flex-caption">Guide your Marketing investment for long term growth</p>
+                </li>
+                <li>
+                    <img class="deskslider" src="@appPath/Content/images/bannerslide3.jpg" /><img class="mobslider" src="@ApplicationInstance.Application["ApplicationPath"]/Content/images/mobslide3.jpg">
+                    <p class="flex-caption">Increase your capability to deliver service offers</p>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+</div>
+<div class="clear"></div>
+

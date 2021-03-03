@@ -1,0 +1,163 @@
+﻿@{UserAccount u = (UserAccount)Session["UserAccount"];}
+
+@{
+    ViewBag.Title = "Index";
+    // ViewBag.pagename = "log";
+    ViewBag.divclassname = "ddfstatement";
+    var appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+@model IList<Claim>
+@section Script{
+
+    <script type="text/javascript" defer src="@BundleTable.Bundles.ResolveBundleUrl("~/claim-indexjs")"></script>
+
+}
+@section Style{
+    @Styles.Render("~/claimindexcss")
+    <style>
+        .ddfstatement table.category td {
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
+}
+<div class="rightcontent">
+    <div class="pgheader"><img src="@appPath/Content/images/redarrow.png"> Claims</div>
+    <div class="col1">
+        @using (Html.BeginForm())
+        {
+
+            <table class="searchholder newclaim">
+                <tbody>
+                    <tr>
+                        <td>Account Code :</td>
+                        <td>
+                            @Html.TextBox("AccountCode", null, new { @class = "fieldStyle_small" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Company Name (EN) :</td>
+                        <td>
+                            @Html.TextBox("Company", null, new { @class = "fieldStyle_small" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Company Name (SC) :</td>
+                        <td>
+                            @Html.TextBox("Company_SC", null, new { @class = "fieldStyle_small" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Program Type :</td>
+                        <td>
+                            @Html.DropDownList("Category", (ViewBag.CategoryList != null) ? ViewBag.CategoryList as IEnumerable<SelectListItem> : null, "Please Select", new { @class = "fieldStyle_small" })<br />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Invoice # :</td>
+                        <td>
+                            @Html.TextBox("Invoice", null, new { @class = "fieldStyle_small" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Invoice Type :</td>
+                        <td>
+                            @Html.DropDownList("InvoiceType", (ViewBag.InvoiceTypeList != null) ? ViewBag.InvoiceTypeList as IEnumerable<SelectListItem> : null, "Please Select", new { @class = "fieldStyle_small" })<br />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Invoice Date :</td>
+                        <td class="claim_search">
+                            @Html.TextBox("InvoiceDate", null, new { type = "text", @class = "fieldStyle_small" })
+                            <br />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Quarter :</td>
+                        <td>
+                            @Html.DropDownList("Quarter",
+                           new List<string> {
+                               "Q1", "Q2", "Q3", "Q4"
+                           }.Select(S => new SelectListItem {
+                               Text = S, Value = S
+                           }).ToList(), "Please Select", new { @class = "fieldStyle_small" })<br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="javascript:void(0);" id="Search" class="commonBtn addcomment claim_search_btn">Search</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        }
+        @if (u != null && u.UserRole != null && u.UserRole.Id == 3)
+        {
+            <a href="@appPath/Admin/Claim/Add" class="commonBtn addcomment" style="float: right;margin-right: 5px;">Add Claim</a>
+        }
+        <div class="padding10"></div>
+        <div class="padding10"></div>
+        <div class="padding10"></div>
+        <table class="category" id="distributorlist" data-sortby="" data-sortdirection="">
+            <thead>
+                <tr>
+                    @*<th scope="col" width="60px"><a href="#" data-sortby="UserId" class="sort-by">UserId</a></th>*@
+                    <th scope="col" width="60px"><a href="javascript:void(0);" data-sortby="ClaimId" class="sort-by">Claim Id</a></th>
+                    <th scope="col" width="90px"><a href="javascript:void(0);" data-sortby="AccountCode" class="sort-by">Account Code</a></th>
+                    <th scope="col" width="90px"><a href="javascript:void(0);" data-sortby="ProgramType" class="sort-by">Program Type</a></th>
+                    <th scope="col" width="150px"><a href="javascript:void(0);" data-sortby="CompanyName" class="sort-by">Distributor Company </a></th>
+                    <th scope="col" width="100px"><a href="javascript:void(0);" data-sortby="InvoicePeriod" class="sort-by">Invoice Period</a></th>
+                    <th scope="col" width="90px"><a href="javascript:void(0);" data-sortby="InvoiceDate" class="sort-by">Invoice Date</a></th>
+                    <th scope="col" width="100px"><a href="javascript:void(0);" data-sortby="InvoiceAmount" class="sort-by">Invoice Amount</a></th>
+                    <th scope="col" width="70px"><a href="javascript:void(0);" data-sortby="Status" class="sort-by">Status</a></th>
+                    <th scope="col" width="60px"><a href="javascript:void(0);" data-sortby="Quarter" class="sort-by">Quarter</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (Claim C in Model)
+                    {
+                        <tr>
+                            <td data-label="ClaimId"><a href="@appPath/Admin/Claim/View/@Security.EncryptandEncodeUrl(C.Id.ToString())">@C.Id</a></td>
+                            <td data-label="AccountCode">@C.AccountCode</td>
+                            <td data-label="ProgramType">@(C != null && C.ProgramType != null ? C.ProgramType.Name : "")</td>
+                            <td data-label="InvoicePeriod">@(C.CompanyName != null ? C.CompanyName : "")</td>
+                            <td data-label="InvoicePeriod">@C.InvoicePeriod</td>
+                            <td data-label="InvoiceDate">@(C.InvoiceDate != null ? ((DateTime)@C.InvoiceDate).ToString("dd/MM/yyyy") : "")</td>
+                            <td data-label="InvoiceAmount">@C.InvoiceAmount</td>
+                            <td data-label="Status">@C.Status</td>
+                            <td data-label="Quarter">@C.Quarter</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="9" style="text-align:center">No records found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="padding10"></div>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <div class="pagination" data-pageindex="1" data-totalitems="@Model[0].TotalCount"></div>
+            <div class="pageof">Displaying items 1 - @Model.Count of @Model[0].TotalCount</div>
+        }
+
+
+    </div>
+
+
+    <div class="clear"></div>
+</div>
+
+<div class="clear"></div>

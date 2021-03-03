@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>DDF</title>
+    @Styles.Render("~/layoutcss")
+    @RenderSection("Style", false)
+</head>
+<body>
+    <div class="wrapper">
+        <div class="head">
+            <div class="banner">
+                <img class="desktop_banner" src="@ApplicationInstance.Application["ApplicationPath"]/Content/images/header_banner.jpg">
+                <img class="mob_banner" src="@ApplicationInstance.Application["ApplicationPath"]/Content/images/header_banner.jpg">
+            </div>
+            <div class="navbar">
+                @if (ViewBag.pagename == null)
+                {
+                    <div class="welcome">
+                        Welcome Admin
+                        <span class="mobile">
+                            <span>|</span> <a href="@ApplicationInstance.Application["ApplicationPath"]" class="logout">
+                                Log Out
+                            </a>
+                        </span>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="mainContents  @ViewBag.divclassname">
+
+            @RenderBody()
+        </div>
+        <div class="footer">
+            <div class="copyright">
+                © Copyright 2003-2018 ExxonMobil Corporation. All rights reserved.
+            </div>
+
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    @RenderSection("Popup", false)
+    <script type="text/javascript">
+        var apppath = '@ApplicationInstance.Application["ApplicationPath"]';
+    </script>
+    @Scripts.Render("~/layoutjs")
+    @RenderSection("Script", false)
+
+</body>
+</html>

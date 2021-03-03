@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    // ViewBag.pagename = "log";
+    ViewBag.divclassname = "ddfstatement";
+}
+@section Script{
+
+    <script src="@ApplicationInstance.Application["ApplicationPath"]/Content/js/vendor/jquery.validate.min.js"></script>
+    <script src="@ApplicationInstance.Application["ApplicationPath"]/Content/js/Admin/admin-report-index.js" type="text/javascript"></script>
+}
+<div class="rightcontent">
+    <div class="pgheader"><img src="@ApplicationInstance.Application["ApplicationPath"]/Content/images/redarrow.png"> Reports</div>
+    <div class="col1">
+        @using (Html.BeginForm())
+        {
+
+            <table class="searchholder newclaim ">
+                <tbody>
+                    <tr>
+                        <td><strong>Reports:</strong></td>
+                        <td>
+                            @Html.DropDownList("Reports", (ViewBag.ReportsList != null) ? ViewBag.ReportsList as IEnumerable<SelectListItem> : null, "Please Select", new { @class = "fieldStyle_small" })<br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Program Type:</strong></td>
+                        <td>
+                            @Html.DropDownList("ProgramType", (ViewBag.ProgramTypeList != null) ? ViewBag.ProgramTypeList as IEnumerable<SelectListItem> : null, "Please Select", new { @class = "fieldStyle_small" })<br />
+                            @Html.ValidationMessage("ProgramType")
+                        </td>
+                    </tr>
+
+                    <tr class="invoice_block">
+                        <td><strong>Invoice Period:</strong></td>
+                        <td>
+                            @Html.DropDownList("InvoicePeriod", (ViewBag.InvoicePeriodList != null) ? ViewBag.InvoicePeriodList as IEnumerable<SelectListItem> : null, "Please Select", new { @class = "fieldStyle_small" })<br />
+                            @Html.ValidationMessage("InvoicePeriod")
+                        </td>
+                    </tr>
+                    <tr class="quarter_block">
+                        <td><strong>Quarter:</strong></td>
+                        <td>
+                            @Html.DropDownList("Quarter",
+                         new List<string> {
+                             "Q1", "Q2"//, "Q3", "Q4"
+                         }.Select(S => new SelectListItem {
+                             Text = S, Value = S
+                         }).ToList(), "Please Select", new { @class = "fieldStyle_small" })<br />
+                            @Html.ValidationMessage("Quarter")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="javascript:void(0);" id="Submit" class="commonBtn addcomment claim_search_btn">Submit</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        }
+
+
+
+
+
+
+    </div>
+
+
+    <div class="clear"></div>
+</div>
+
+<div class="clear"></div>

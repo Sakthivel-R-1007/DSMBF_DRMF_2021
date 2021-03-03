@@ -1,0 +1,21 @@
+﻿@model IList<Distributor>
+ @{ 
+     string appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+ }
+@if (Model != null && Model.Count > 0)
+{
+    foreach (Distributor DR in Model)
+    {
+
+<tr>
+    <td data-label="UserId"><a href="@appPath/Admin/Distributor/View/@Security.EncryptandEncodeUrl(DR.Id.ToString())">@DR.AccountCode</a></td>
+    <td data-label="ContactPerson">@DR.ProgramTypeName</td>
+    <td data-label="ContactPerson">@DR.ContactPerson</td>
+    <td data-label="Area">@DR.Area</td>
+    <td data-label="CompanyName_EN">@DR.CompanyName_EN</td>
+    <td data-label="Email">@DR.Email</td>
+    <td data-label="ContactNumber">@DR.ContactNumber</td>
+</tr>
+
+    }
+}

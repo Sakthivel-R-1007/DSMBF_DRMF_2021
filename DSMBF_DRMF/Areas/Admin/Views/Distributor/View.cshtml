@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    // ViewBag.pagename = "log";
+    ViewBag.divclassname = "details";
+    string appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+@model Distributor
+<div class="rightcontent">
+    <div class="pgheader"><img src="@appPath/Content/images/redarrow.png">Distributor Details</div>
+    <table width="100%" class="tblbudget" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+
+            <tr>
+                <td><strong>Account Code:</strong></td>
+                <td>@Model.AccountCode</td>
+            </tr>
+            <tr>
+                <td><strong>Email :</strong></td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td><strong>Company Name (EN) :</strong></td>
+                <td>@Model.CompanyName_EN</td>
+            </tr>
+            <tr>
+                <td><strong>Company Name (SC) :</strong></td>
+                <td>@Model.CompanyName_SC</td>
+            </tr>
+            <tr>
+                <td><strong>Program Type :</strong></td>
+                <td>
+                    @if (Model.ProgramTypes != null)
+                    {
+                        var str = String.Join("+", Model.ProgramTypes.Select(x => x.Name));
+                        @str
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Delivery Address :</strong></td>
+                <td>@Model.DeliveryAddress</td>
+            </tr>
+            <tr>
+                <td><strong>Contact Person :</strong></td>
+                <td>@Model.ContactPerson</td>
+            </tr>
+
+            <tr>
+                <td><strong>Contact Number :</strong></td>
+                <td>@Model.ContactNumber</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="padding10"></div>
+    <div class="padding10"></div>
+    @if (Model != null && Model.ProgramTypes.Count > 0)
+    {
+        foreach (ProgramType PT in Model.ProgramTypes)
+        {
+        <a href="@appPath/Admin/Distributor/DistributorsBudget/@(Security.EncryptandEncodeUrl(Model.GUID.ToString() + "_" + PT.Id.ToString()))">Distributors Budget Details (@PT.Name) </a> <br /><br /><br />
+        }
+    }
+    <div class="clear"></div>
+</div>
+
+<div class="clear"></div>

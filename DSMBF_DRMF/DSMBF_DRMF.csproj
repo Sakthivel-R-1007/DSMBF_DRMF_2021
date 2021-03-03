@@ -1,0 +1,628 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A800D4C5-39C8-41A8-9E11-02EAACF7A4D4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DSMBF_DRMF</RootNamespace>
+    <AssemblyName>DSMBF_DRMF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.94.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.94.2\lib\net40\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.3.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.3\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.3.0\lib\net45\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.9.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.9.1\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.5.0\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.MSSqlServer, Version=5.1.2.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.MSSqlServer.5.1.2\lib\net45\Serilog.Sinks.MSSqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.PeriodicBatching.2.2.0\lib\net45\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Unity.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.0.3.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.2.0.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.3.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.3.0\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\js\Admin\admin-claim-add.js" />
+    <Content Include="Content\js\Admin\admin-claim-index.js" />
+    <Content Include="Content\js\Admin\admin-claim-view.js" />
+    <Content Include="Content\js\Admin\admin-distributor-index.js" />
+    <Content Include="Content\js\Admin\admin-figure-add.js" />
+    <Content Include="Content\js\Admin\admin-report-index.js" />
+    <Content Include="Content\js\Admin\login-resetpassword.js" />
+    <Content Include="Content\js\Admin\login-forgotpassword.js" />
+    <Content Include="Content\js\Admin\login-index.js" />
+    <Content Include="Content\css\demo.css" />
+    <Content Include="Content\css\flexslider.css" />
+    <Content Include="Content\css\popup.css" />
+    <Content Include="Content\css\responsive-style.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\bannerslide1.jpg" />
+    <Content Include="Content\images\bannerslide2.jpg" />
+    <Content Include="Content\images\bannerslide3.jpg" />
+    <Content Include="Content\images\ddfstatement-02.jpg" />
+    <Content Include="Content\images\ddfstatement-03.jpg" />
+    <Content Include="Content\images\ddfstatement.jpg" />
+    <Content Include="Content\images\header_banner-171012.jpg" />
+    <Content Include="Content\images\header_banner.jpg" />
+    <Content Include="Content\images\mobslide1.jpg" />
+    <Content Include="Content\images\mobslide2.jpg" />
+    <Content Include="Content\images\mobslide3.jpg" />
+    <Content Include="Content\images\redarrow.png" />
+    <Content Include="Content\images\slide_img-171012.jpg" />
+    <Content Include="Content\images\slide_img.jpg" />
+    <Content Include="Content\includes\footer.html" />
+    <Content Include="Content\includes\menunav.html" />
+    <Content Include="Content\js\bootstrap\bootstrap.js" />
+    <Content Include="Content\js\common.js" />
+    <Content Include="Content\js\ga.js" />
+    <Content Include="Content\js\jquery-1.8.0.min.js" />
+    <Content Include="Content\js\jquery-1.9.1.min.js" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-icons_a83300_256x240.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="Content\js\jqueryCalendar\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\js\jqueryCalendar\jquery-1.6.2.min.js" />
+    <Content Include="Content\js\jqueryCalendar\jquery-ui-1.8.15.custom.min.js" />
+    <Content Include="Content\js\jqueryCalendar\jqueryCalendar.css" />
+    <Content Include="Content\js\slider_responsive\demo.js" />
+    <Content Include="Content\js\slider_responsive\fader.js" />
+    <Content Include="Content\js\slider_responsive\froogaloop.js" />
+    <Content Include="Content\js\slider_responsive\jquery.easing.js" />
+    <Content Include="Content\js\slider_responsive\jquery.fitvid.js" />
+    <Content Include="Content\js\slider_responsive\jquery.flexslider.js" />
+    <Content Include="Content\js\slider_responsive\jquery.mousewheel.js" />
+    <Content Include="Content\js\slider_responsive\modernizr.js" />
+    <Content Include="Content\js\slider_responsive\shBrushCss.js" />
+    <Content Include="Content\js\slider_responsive\shBrushJScript.js" />
+    <Content Include="Content\js\slider_responsive\shBrushXml.js" />
+    <Content Include="Content\js\slider_responsive\shCore.js" />
+    <Content Include="Content\js\tinymce\plugins\advlist\plugin.js" />
+    <Content Include="Content\js\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\config\bolt\atomic.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\config\bolt\browser.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\config\bolt\demo.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\config\bolt\prod.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\Gruntfile.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\plugin.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\demo\html\demo.html" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\demo\js\tinymce\lists\Demo.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\actions\Indent.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\actions\Outdent.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\actions\ToggleList.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\core\Bookmark.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\core\Delete.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\core\NodeType.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\core\NormalizeLists.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\core\Range.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\core\Selection.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\core\SplitList.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\core\TextBlock.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\main\js\tinymce\lists\Plugin.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\browser\ApplyDlTest.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\browser\ApplyTest.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\browser\BackspaceDeleteInlineTest.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\browser\BackspaceDeleteTest.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\browser\IndentTest.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\browser\InlineTest.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\browser\OutdentTest.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\browser\RemoveTest.js" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\test\js\module\tinymce\lists\test\LegacyUnit.js" />
+    <Content Include="Content\js\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Content\js\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Content\js\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Content\js\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Content\js\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Content\js\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Content\js\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Content\js\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Content\js\tinymce\themes\modern\config\bolt\browser.js" />
+    <Content Include="Content\js\tinymce\themes\modern\config\bolt\demo.js" />
+    <Content Include="Content\js\tinymce\themes\modern\config\bolt\prod.js" />
+    <Content Include="Content\js\tinymce\themes\modern\Gruntfile.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\demo\html\demo.html" />
+    <Content Include="Content\js\tinymce\themes\modern\src\demo\js\tinymce\modern\Demo.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\modes\Iframe.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\modes\Inline.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\Theme.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\ui\A11y.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\ui\ContextToolbars.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\ui\Menubar.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\ui\ProgressState.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\ui\Resize.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\ui\Sidebar.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\ui\SkinLoaded.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\main\js\tinymce\modern\ui\Toolbar.js" />
+    <Content Include="Content\js\tinymce\themes\modern\src\test\browser\SidebarTest.js" />
+    <Content Include="Content\js\tinymce\themes\modern\theme.js" />
+    <Content Include="Content\js\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Content\js\tinymce\tinymce.js" />
+    <Content Include="Content\js\tinymce\tinymce.min.js" />
+    <Content Include="Content\js\vendor\jquery-1.12.4.js" />
+    <Content Include="Content\js\vendor\jquery-ui-1.12.1.js" />
+    <Content Include="Content\js\vendor\jquery.alphanum.js" />
+    <Content Include="Content\js\vendor\jquery.simplePagination.js" />
+    <Content Include="Content\js\vendor\jquery.validate.additional-methods.js" />
+    <Content Include="Content\js\vendor\jquery.validate.js" />
+    <Content Include="Content\js\vendor\jquery.validate.min.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="ApplicationInsights.config" />
+    <Content Include="Resources\InvoiceDocuments\Activate.png" />
+    <Content Include="Resources\InvoiceDocuments\activity-form %281%29.png" />
+    <Content Include="Resources\InvoiceDocuments\activity-form.png" />
+    <Content Include="Resources\InvoiceDocuments\add-btn.png" />
+    <Content Include="Resources\InvoiceDocuments\add_cart_btn.png" />
+    <Content Include="Resources\InvoiceDocuments\add_cart_btn_110.png" />
+    <Content Include="Resources\InvoiceDocuments\amazon-india.jpg" />
+    <Content Include="Resources\InvoiceDocuments\approve-activities.png" />
+    <Content Include="Resources\InvoiceDocuments\Approve_Activities_3.png" />
+    <Content Include="Resources\InvoiceDocuments\how-it-works-en-TH.png" />
+    <Content Include="Resources\InvoiceDocuments\logo.jpg" />
+    <Content Include="Resources\InvoiceDocuments\logoheader.png" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="log4net.config" />
+    <Content Include="Areas\InvoiceIssuer\Views\web.config" />
+    <Content Include="Areas\InvoiceVerification\Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Content\fonts\EMprint-Light.eot" />
+    <Content Include="Content\fonts\EMprint-Light.ttf" />
+    <Content Include="Content\fonts\EMprint-Light.woff" />
+    <Content Include="Content\fonts\EMprint-Regular.eot" />
+    <Content Include="Content\fonts\EMprint-Regular.ttf" />
+    <Content Include="Content\fonts\EMprint-Regular.woff" />
+    <Content Include="Content\fonts\EMprint-Semibold.eot" />
+    <Content Include="Content\fonts\EMprint-Semibold.ttf" />
+    <Content Include="Content\fonts\EMprint-Semibold.woff" />
+    <Content Include="Content\images\Thumbs.db" />
+    <Content Include="Content\js\tinymce\plugins\lists\src\.eslintrc" />
+    <Content Include="Content\js\tinymce\skins\lightgray\AbsoluteLayout.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Animations.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Arrows.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Button.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ButtonGroup.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Checkbox.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ColorBox.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ColorButton.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ColorPicker.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ComboBox.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Container.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Content.Inline.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Content.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Content.Objects.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\CropRect.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\FieldSet.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\FitLayout.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\FloatPanel.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\FlowLayout.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce-small.json" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce.json" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Content\js\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Icons.Ie7.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Icons.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Iframe.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ImagePanel.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\InfoBox.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Label.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ListBox.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Menu.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\MenuBar.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\MenuButton.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\MenuItem.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Mixins.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Notification.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Panel.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Path.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Progress.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Radio.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Reset.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ResizeHandle.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Scrollable.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\SelectBox.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Sidebar.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\skin.dev.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\skin.ie7.dev.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\skin.ie7.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\skin.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Slider.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Spacer.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\SplitButton.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\StackLayout.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\TabPanel.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\TextBox.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Throbber.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\TinyMCE.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\ToolTip.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Variables.less" />
+    <Content Include="Content\js\tinymce\skins\lightgray\Window.less" />
+    <Content Include="Content\js\tinymce\themes\modern\src\test\.eslintrc" />
+    <Content Include="Areas\InvoiceIssuer\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\InvoiceIssuer\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\InvoiceIssuer\Views\Invoice\Index.cshtml" />
+    <Content Include="fonts\EMprint-Light.eot" />
+    <Content Include="fonts\EMprint-Light.ttf" />
+    <Content Include="fonts\EMprint-Light.woff" />
+    <Content Include="fonts\EMprint-Regular.eot" />
+    <Content Include="fonts\EMprint-Regular.ttf" />
+    <Content Include="fonts\EMprint-Regular.woff" />
+    <Content Include="fonts\EMprint-Semibold.eot" />
+    <Content Include="fonts\EMprint-Semibold.ttf" />
+    <Content Include="fonts\EMprint-Semibold.woff" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Areas\InvoiceVerification\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\InvoiceVerification\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\InvoiceVerification\Views\Verification\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Distributor\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Distributor\PartialIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\Distributor\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Distributor\DistributorsBudget.cshtml" />
+    <Content Include="Areas\Admin\Views\Claim\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Claim\Add.cshtml" />
+    <Content Include="Content\js\jqueryCalendar\images\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\Claim\PartialIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Claim\view.cshtml" />
+    <Content Include="Areas\Admin\Views\Figure\Add.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\FigureController.cs" />
+    <Compile Include="Areas\InvoiceIssuer\Controllers\InvoiceController.cs" />
+    <Compile Include="Areas\InvoiceIssuer\InvoiceIssuerAreaRegistration.cs" />
+    <Compile Include="Areas\InvoiceVerification\Controllers\VerificationController.cs" />
+    <Compile Include="Areas\InvoiceVerification\InvoiceVerificationAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClaimController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DistributorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="CustomAttribute\DisableCacheAttribute.cs" />
+    <Compile Include="CustomAttribute\ErrorLoggerAttribute.cs" />
+    <Compile Include="Filters\AuthenticationFilter.cs" />
+    <Compile Include="Filters\FilterConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\EmailTemplate.cs" />
+    <Compile Include="Helpers\GetRemoteIp.cs" />
+    <Compile Include="Helpers\KeywordDictionary.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Shared\PasswordRecoveryEdm.cshtml" />
+    <Content Include="Views\Login\ResetPassword.cshtml" />
+    <Content Include="Views\Shared\_EDMPasswordChangedAcknowledge.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\InvoiceIssuer\Models\" />
+    <Folder Include="Areas\InvoiceVerification\Models\" />
+    <Folder Include="Content\images\InvoiceDocuments\" />
+    <Folder Include="Content\js\Admin\InvoiceIssuer\" />
+    <Folder Include="Resources\InvoiceExcel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DSMBF_DRMF.Core\DSMBF_DRMF.Core.csproj">
+      <Project>{320d3174-5388-4410-8bf6-306be2764805}</Project>
+      <Name>DSMBF_DRMF.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DSMBF_DRMF.Domain\DSMBF_DRMF.Domain.csproj">
+      <Project>{e07d94d9-f50a-4469-8ce3-4b2d8fe8dc32}</Project>
+      <Name>DSMBF_DRMF.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DSMBF_DRMF.Persistence\DSMBF_DRMF.Persistence.csproj">
+      <Project>{d6ac5445-9baf-438f-aa83-e8023ed66919}</Project>
+      <Name>DSMBF_DRMF.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DSMBF_DRMF.Service\DSMBF_DRMF.Service.csproj">
+      <Project>{99d585ec-7ef4-4e35-aa01-c593c492abce}</Project>
+      <Name>DSMBF_DRMF.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62627</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62627/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.9.1\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.9.1\build\Microsoft.ApplicationInsights.Web.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.9.1\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.9.1\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>DSMBF & DRMF</title>
+    @Styles.Render("~/layoutcss")
+    @RenderSection("Style", false)
+    @{
+        UserAccount u = (UserAccount)Session["UserAccount"];
+        string appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+    }
+</head>
+<body>
+    <div class="wrapper">
+        <div class="head">
+            <div class="banner">
+                <img class="desktop_banner" src="@appPath/Content/images/header_banner.jpg">
+                <img class="mob_banner" src="@appPath/Content/images/header_banner.jpg">
+            </div>
+            <div class="navbar">
+                @if (ViewBag.pagename == null && u != null)
+                {
+                    <div class="welcome">
+                        Welcome @(u != null ? u.FirstName : "")
+                        <span class="mobile">
+                            <span>|</span> <a href="@appPath/Login/Logout" class="logout">
+                                Log Out
+                            </a>
+                        </span>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="mainContents  @ViewBag.divclassname">
+            @if (ViewBag.pagename == null && u != null)
+            {
+                <div class="leftsidebar">
+                    <ul>
+
+                        <li><a href="@appPath/Admin/Home/Index">Home</a></li>
+
+                        <li><a href="@appPath/Admin/Claim/Index">View Claims</a></li>
+                        @*@if (u != null && u.UserRole != null && u.UserRole.Id == 3)
+                        {*@
+                            <li><a href="@appPath/Admin/Distributor/Index">Distributors</a></li>
+                            <li><a href="@appPath/Admin/Report/Index">Reports</a></li>
+                        @*}*@
+                        <li><a href="@appPath/Login/Logout">Logout</a></li>
+                    </ul>
+                </div>
+            }            
+            @RenderBody()
+        </div>
+        <div class="footer">
+            <div class="copyright">
+                © Copyright @DateTime.Now.Year ExxonMobil Corporation. All rights reserved.
+            </div>
+
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    @RenderSection("Popup", false)
+    <script type="text/javascript">
+        var apppath = '@ApplicationInstance.Application["ApplicationPath"]';
+    </script>
+    @Scripts.Render("~/layoutjs")
+    @RenderSection("Script", false)
+
+</body>
+</html>

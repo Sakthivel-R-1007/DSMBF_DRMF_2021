@@ -1,0 +1,183 @@
+﻿
+@{UserAccount u = (UserAccount)Session["UserAccount"];}
+@{
+    ViewBag.Title = "View Claim";
+    // ViewBag.pagename = "log";
+    ViewBag.divclassname = "claim";
+    var appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+@section Script{
+    <script type="text/javascript" defer src="@BundleTable.Bundles.ResolveBundleUrl("~/claim-viewjs")"></script>
+}
+@section Style{
+    @Styles.Render("~/claimviewcss")
+    <style>
+        .dropdownclass {
+            width: 283px !important;
+        }
+
+        label.error {
+            color: red;
+        }
+
+        .modal-content {
+            width: 470px !important;
+        }
+    </style>
+}
+@model Claim
+
+@if (Model != null)
+{
+    <div class="rightcontent">
+        <div class="pgheader"><img src="@appPath/Content/images/redarrow.png">Sales Claim Summary</div>
+        <div class="col1">
+            <table class="tblbudget" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="150px"><strong>Claim # :</strong></td>
+                    <td>@Model.Id </td>
+                </tr>
+                <tr>
+                    <td><strong>Claim Date :</strong></td>
+                    <td>@Model.CreatedOn.ToString("dd/MM/yyyy")</td>
+                </tr>
+                <tr>
+                    <td><strong>Distributor Company :</strong></td>
+                    <td> @Model.Distributor.CompanyName_SC</td>
+                </tr>
+                <tr>
+                    <td><strong>Invoice Type :</strong></td>
+                    <td> @(Model.InvoiceTypeId > 0 && Model.InvoiceTypeId == 1 ? "服务费" : (Model.InvoiceTypeId == 2 ? "礼品费用" : ""))</td>
+                </tr>
+                @if (!string.IsNullOrEmpty(Model.Invoice))
+                {
+                    <tr>
+                        <td><strong>Invoice # :</strong></td>
+                        <td> @Model.Invoice</td>
+                    </tr>
+                }
+                <tr>
+                    <td><strong>Invoice Amount without tax :</strong></td>
+                    <td>RMB @Model.InvoiceAmountwithouttax</td>
+                </tr>
+                <tr>
+                    <td><strong>Tax Amount :</strong></td>
+                    <td>RMB @Model.TaxAmount</td>
+                </tr>
+                <tr>
+                    <td><strong>Invoice Amount with tax :</strong></td>
+                    <td>RMB @Model.InvoiceAmount</td>
+                </tr>
+                <tr>
+                    <td><strong>PO # :</strong></td>
+                    <td> @Model.PO</td>
+                </tr>
+                <tr>
+                    <td><strong>Invoice Period :</strong></td>
+                    <td> @Model.InvoicePeriod</td>
+                </tr>
+                <tr>
+                    <td><strong>Claim Status :</strong></td>
+                    <td> @Model.Status</td>
+                </tr>
+                <tr>
+                    <td><strong>Quarter :</strong></td>
+                    <td> @Model.Quarter</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="padding15"></div>
+        <div class="accordion_tab">
+            <ul class="tabs">
+                <li class="active" rel="tab1">Claim Documents </li>
+            </ul>
+
+            <div class="tab_container">
+                @*<h3 class="d_active tab_drawer_heading" rel="tab1">Claim Comments</h3>*@
+                <h3 class="tab_drawer_heading" rel="tab1">Claim Documents</h3>
+                <div id="tab1" class="tab_content" style="display:block">
+                    <table class="category">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="20%"><a href="javascript:void(0)">Upload Date</a></th>
+                                @*<th scope="col" width="50%"><a href="javascript:void(0)">Document Type</a></th>*@
+                                <th scope="col" width="30%"><a href="javascript:void(0)">File Name</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.InvoiceDocuments != null)
+                            {
+                                foreach (InvoiceDocument ID in Model.InvoiceDocuments)
+                                {
+                                    <tr>
+                                        <td data-label="Upload Date">@ID.CreatedOn.ToString("dd/MM/yyyy")</td>
+                                        @*<td data-label="Document Type">@ID.Name </td>*@
+                                        <td data-label="File Name"><a target="_blank" alt="" href="/Resources/InvoiceDocuments/@(ID.GUID +"."+ ID.Extension)">@(ID.Name)</a></td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="3"> No Results Found</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- #tab2 -->
+
+
+            </div>
+            <!-- .tab_container -->
+            @*<p>Note: Attendance list required if claiming Food and Beverage. </p>*@
+
+            <br class="brdesktop">
+            @if (u != null && u.UserRole != null && u.UserRole.Id == 3)
+            {
+                if (!Model.IsPaid && Model.Status == "Approved")
+                {
+                    <a href="@appPath/Admin/Claim/Edit/@Security.EncryptandEncodeUrl(Model.Id.ToString())" class="commonBtn edit">Edit</a>
+
+
+                    <a href="#" class="commonBtn paid paidicon" data-encDetail="@Security.EncryptandEncodeUrl(Model.Id.ToString())">Paid</a>
+                }
+            }
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+}
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "Form" }))
+{
+    @Html.AntiForgeryToken()
+    <div id="dynamic_container">
+    </div>
+}
+@section Popup{
+    <div class="modal fade" id="PaidClaim" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content claimedit">
+                <div class="modal-header">
+                    <div class="title"> DSMBF & DRMF</div>
+                    <div class="clear"> </div>
+                </div>
+                <div class="clear"> </div>
+                <div class="modal-body">
+                    <div class="container ddf">
+                        <p class="center">Are you sure you want to Paid claim?</p>
+                        <div class="padding10"></div>
+                        <p class="center">
+                            <a href="javascript:void(0);" data-value="0" id="btnconfirm_paid" class="commonBtn_02">Yes</a>
+                            <a href="javascript:void(0);" data-dismiss="modal" aria-hidden="true" class="commonBtn_02">No</a>
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

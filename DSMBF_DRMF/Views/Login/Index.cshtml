@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    ViewBag.pagename = "log";
+    ViewBag.divclassname = "login";
+    string appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+
+@model UserAccount
+@section Script{
+    @Scripts.Render("~/loginjs")
+}
+<div class="col_1">
+    <div class="leftcontent">
+        <p>
+            <strong>Welcome to the DSMBF & DRMF Portal</strong>
+            <span>Maximise the Impact of your Marketing Spend</span>
+        </p>
+    </div>
+    <div class="rightcontent"><img src="@appPath/Content/images/slide_img.jpg" style="display: block;"></div>
+    <div class="clear"></div>
+</div>
+<div class="col_2">
+
+    <div class="rightcontent">The portal is provided as a service to pre-registered users. If you are an existing customer or supplier, your business representative will contact you with the registration information when the functionality that is relevant to your business becomes available. </div>
+    <div class="leftcontent">
+        <div class="loginTab">
+            <div class="loginHeader">Login</div>
+            <div class="loginBody">
+                <div style="padding-left: 13px;">Login to your DSMBF & DRMF account.</div>
+                @*<div class="languages">
+                        <a href="#" style="display: none;">English (English)</a>
+                        <a href="#">中文简体 (Simplified Chinese)</a>
+                        <a href="#">中文繁體 (Traditional Chinese)</a>
+                        <a href="#">Bahasa Indonesia (Indonesian)</a>
+                        <a href="#">한국어 (Korean)</a>
+                    </div>*@
+                @using (Html.BeginForm())
+                {
+
+                    <table style="margin-top: 10px; padding-left: 5px;">
+
+                        <tbody>
+                            <tr>
+                                <td width="70px">Account No.</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.AccountNo, new { @class = "field required", style = "width:140px" })
+                                    @Html.ValidationMessageFor(m => m.AccountNo)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "field required", style = "width:140px" })
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                </td>
+                            </tr>
+
+                            @if (ViewBag.Error != null)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <span class="redtext">@ViewBag.Error</span>
+                                    </td>
+                                </tr>
+
+                            }
+                            <tr>
+                                <td>
+                                    @*@{var Passwordguid = Security.Decrypt<string>("fEBtQ5HQOEv_2bkKr8DkhMoQ_3d_3d"); }
+                                        <span>@Passwordguid</span>*@
+
+                                </td>
+                                <td align="right">
+                                    <a style="text-decoration: none;" id="submitBtn" href="javascript:void(0);">
+                                        <input type="button" value="LOGIN" class="loginBtn" style="margin-top: 10px;">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+
+                <p style="padding-left: 13px; margin-top: 0px;"><a href="@appPath/ForgotPassword">Forgotten Password</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+@*@(Security.Encrypt<string>("5kKL-UwE"))*@
+
+<div class="col_3">
+    This is a privately owned computing system. It can only be accessed by authorized users and is equipped with a security system to prevent and record unauthorized access attempts or attempted access. Please be aware that access is subject to the Terms and Conditions and any other contract. Unauthorized access or use is a violation of the law.
+</div>

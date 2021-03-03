@@ -1,0 +1,324 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    // ViewBag.pagename = "log";
+    ViewBag.divclassname = "ddfstatement";
+    string appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+@section Style{
+    <style>
+        .ddfstatement table.tblbudget tr td:first-child {
+            text-align: left;
+        }
+
+        .ddfstatement table.tblbudget tr td {
+            text-align: right;
+        }
+    </style>
+}
+@model DistributorsBudget
+
+<div class="rightcontent">
+
+    <div class="pgheader"><img src="@appPath/Content/images/redarrow.png">Distributor @(Model != null && Model.ProgramTypeId > 0 && Model.ProgramTypeId == 1 ? "PV DRMF" : "CV DRMF")  Budget Details </div>
+    <div class="col1">
+        @if (Model != null)
+        {
+        <table class="tblbudget" cellpadding="0" cellspacing="0" border="1">
+            <tr>
+                <th colspan="3" bgcolor="#CCCCCC"><strong>Total Budget (100%)</strong></th>
+            </tr>
+            <tr>
+                <td>Total Budget for the year:</td>
+                <td width="25%">@(Model.FullYearTotalBudgetUSD > 0 ? "$ " + ((double)Model.FullYearTotalBudgetUSD).ToString("N") : "0")</td>
+                <td width="25%">@(Model.FullYearTotalBudget > 0 ? "RMB " + ((double)Model.FullYearTotalBudget).ToString("N") : "0") </td>
+            </tr>
+            <tr>
+                <td>Total Budget for the Year Utilized:</td>
+                <td>@(Model.FullYearTotalBudgetUtilizedUSD > 0 ? "$ " + ((double)Model.FullYearTotalBudgetUtilizedUSD).ToString("N") : "0")</td>
+                <td>@(Model.FullYearTotalBudgetUtilized > 0 ? "RMB " + ((double)Model.FullYearTotalBudgetUtilized).ToString("N") : "0")</td>
+            </tr>
+            <tr>
+                <td>Total Budget for the Year Remaining:</td>
+                <td>@(Model.FullYearTotalBudgetRemainingUSD > 0 ? "$ " + ((double)Model.FullYearTotalBudgetRemainingUSD).ToString("N") : "0")</td>
+                <td>@(Model.FullYearTotalBudgetRemaining > 0 ? "RMB " + ((double)Model.FullYearTotalBudgetRemaining).ToString("N") : "0")</td>
+            </tr>
+
+            @if (Model.ProgramTypeId == 1)
+            {
+                if (Model.EMCSS_Jan_Mar_LO_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCSS Jan~Mar (润滑油) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_LO_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_TotalBudget > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_LO_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_LO_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_LO_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_LO_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_LO_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+                if (Model.EMCSS_Jan_Mar_CR_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCSS Jan~Mar (化学试剂) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_CR_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_TotalBudget > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_CR_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_CR_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_CR_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_CR_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_CR_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+
+                if (Model.EMCH_Jan_Mar_LO_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCH Jan~Mar (润滑油) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_LO_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_TotalBudget > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_LO_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_LO_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_LO_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_LO_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_LO_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+            }
+
+            @if (Model.ProgramTypeId == 2)
+            {
+
+                if (Model.EMCH_Jan_Mar_LO_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCH Jan~Mar (润滑油) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_LO_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_TotalBudget > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_LO_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_LO_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_LO_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_LO_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_LO_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_LO_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+
+                if (Model.EMCH_Jan_Mar_G_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCH Jan~Mar (润滑脂) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCH_Jan_Mar_G_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_G_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_G_TotalBudget > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_G_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCH_Jan_Mar_G_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_G_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_G_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_G_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCH_Jan_Mar_G_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCH_Jan_Mar_G_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Jan_Mar_G_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCH_Jan_Mar_G_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+
+                if (Model.EMCH_Apr_Jun_LO_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCH Apr~Jun (润滑油) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCH_Apr_Jun_LO_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCH_Apr_Jun_LO_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Apr_Jun_LO_TotalBudget > 0 ? "RMB " + ((double)Model.EMCH_Apr_Jun_LO_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCH_Apr_Jun_LO_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCH_Apr_Jun_LO_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Apr_Jun_LO_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCH_Apr_Jun_LO_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCH_Apr_Jun_LO_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCH_Apr_Jun_LO_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Apr_Jun_LO_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCH_Apr_Jun_LO_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+
+                if (Model.EMCH_Apr_Jun_G_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCH Apr~Jun (润滑脂) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCH_Apr_Jun_G_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCH_Apr_Jun_G_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Apr_Jun_G_TotalBudget > 0 ? "RMB " + ((double)Model.EMCH_Apr_Jun_G_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCH_Apr_Jun_G_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCH_Apr_Jun_G_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Apr_Jun_G_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCH_Apr_Jun_G_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCH_Apr_Jun_G_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCH_Apr_Jun_G_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCH_Apr_Jun_G_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCH_Apr_Jun_G_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+
+                if (Model.EMCSS_Jan_Mar_LO_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCSS Jan~Mar (润滑油) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_LO_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_TotalBudget > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_LO_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_LO_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_LO_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_LO_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_LO_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_LO_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+                if (Model.EMCSS_Jan_Mar_CR_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCSS Jan~Mar (化学试剂) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_CR_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_TotalBudget > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_CR_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_CR_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_CR_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCSS_Jan_Mar_CR_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Jan_Mar_CR_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCSS_Jan_Mar_CR_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+
+
+
+                if (Model.EMCSS_Apr_Jun_LO_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCSS Apr~Jun (润滑油) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCSS_Apr_Jun_LO_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCSS_Apr_Jun_LO_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Apr_Jun_LO_TotalBudget > 0 ? "RMB " + ((double)Model.EMCSS_Apr_Jun_LO_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCSS_Apr_Jun_LO_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCSS_Apr_Jun_LO_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Apr_Jun_LO_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCSS_Apr_Jun_LO_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCSS_Apr_Jun_LO_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCSS_Apr_Jun_LO_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Apr_Jun_LO_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCSS_Apr_Jun_LO_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+                if (Model.EMCSS_Apr_Jun_CR_TotalBudget > 0)
+                {
+                    <tr>
+                        <th colspan="3" bgcolor="#CCCCCC"><strong>EMCSS Apr~Jun (化学试剂) </strong></th>
+                    </tr>
+                    <tr>
+                        <td>Total Budget:</td>
+                        <td>@(Model.EMCSS_Apr_Jun_CR_TotalBudgetUSD > 0 ? "$ " + ((double)Model.EMCSS_Apr_Jun_CR_TotalBudgetUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Apr_Jun_CR_TotalBudget > 0 ? "RMB " + ((double)Model.EMCSS_Apr_Jun_CR_TotalBudget).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Utilized :</td>
+                        <td>@(Model.EMCSS_Apr_Jun_CR_BudgetUtilizedUSD > 0 ? "$ " + ((double)Model.EMCSS_Apr_Jun_CR_BudgetUtilizedUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Apr_Jun_CR_BudgetUtilized > 0 ? "RMB " + ((double)Model.EMCSS_Apr_Jun_CR_BudgetUtilized).ToString("N") : "0")</td>
+                    </tr>
+                    <tr>
+                        <td>Budget Remaining :</td>
+                        <td>@(Model.EMCSS_Apr_Jun_CR_BudgetRemainingUSD > 0 ? "$ " + ((double)Model.EMCSS_Apr_Jun_CR_BudgetRemainingUSD).ToString("N") : "0")</td>
+                        <td>@(Model.EMCSS_Apr_Jun_CR_BudgetRemaining > 0 ? "RMB " + ((double)Model.EMCSS_Apr_Jun_CR_BudgetRemaining).ToString("N") : "0")</td>
+                    </tr>
+
+                }
+            }
+
+
+
+
+
+
+
+
+
+        </table>
+        }
+        else
+        {
+            <span>No Budget for this Distributors</span>
+        }
+
+    </div>
+</div>
+
+<div class="clear"></div>

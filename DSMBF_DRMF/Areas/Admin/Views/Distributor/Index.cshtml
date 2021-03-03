@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    // ViewBag.pagename = "log";
+    ViewBag.divclassname = "ddfstatement";
+    string appPath = Convert.ToString(ApplicationInstance.Application["ApplicationPath"]);
+}
+@model IList<Distributor>
+@section Script{
+    <script type="text/javascript" defer src="@BundleTable.Bundles.ResolveBundleUrl("~/admin-distributor-indexjs")"></script>
+   
+}
+@section Style{
+    @Styles.Render("~/distributorcss")
+    <style>
+        .ddfstatement table.category td {
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
+}
+<div class="rightcontent">
+    <div class="pgheader"><img src="@appPath/Content/images/redarrow.png"> Distributors</div>
+    <div class="col1">
+        @using (Html.BeginForm())
+        {
+
+            <table class="searchholder newclaim">
+                <tbody>
+                    <tr>
+                        <td><strong>Account Code:</strong></td>
+                        <td>
+                            @Html.TextBox("AccountCode", null, new { @class = "fieldStyle_small" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Program Type:</strong></td>
+                        <td>
+                            @Html.DropDownList("ProgramType", (ViewBag.ProgramTypeList != null) ? ViewBag.ProgramTypeList as IEnumerable<SelectListItem> : null, "Please Select", new { @class = "fieldStyle_small" })<br />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="javascript:void(0);" id="Search" class="commonBtn addcomment claim_search_btn">Search</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        }
+        <div class="padding10"></div>
+        <table class="category" id="distributorlist" data-sortby="" data-sortdirection="">
+            <thead>
+                <tr>
+                    @*<th scope="col" width="60px"><a href="#" data-sortby="UserId" class="sort-by">UserId</a></th>*@
+                    <th scope="col" width="80px"><a href="#" data-sortby="AccountCode" class="sort-by">Account Code</a></th>
+                    <th scope="col" width="80px"><a href="#" data-sortby="ProgramType" class="sort-by">Program Type</a></th>                   
+                    <th scope="col" width="90px"><a href="#" data-sortby="ContactPerson" class="sort-by">Contact Person</a></th>
+                    <th scope="col" width="60px"><a href="#" data-sortby="Area" class="sort-by">Area</a></th>
+                    <th scope="col" width="160px"><a href="#" data-sortby="CompanyName_EN" class="sort-by">Distributor Company Name (EN)</a></th>
+                    @*<th scope="col" width="200px"><a href="#" data-sortby="DeliveryAddress" class="sort-by">Delivery Address</a></th>*@
+                    <th scope="col" width="150px"><a href="#" data-sortby="Email" class="sort-by">Email Address</a></th>
+                    <th scope="col" width="100px"><a href="#" data-sortby="ContactNumber" class="sort-by">Contact Number</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (Distributor DR in Model)
+                    {
+                <tr>
+                    <td data-label="UserId"><a href="@appPath/Admin/Distributor/View/@Security.EncryptandEncodeUrl(DR.Id.ToString())">@DR.AccountCode</a></td>
+                    <td data-label="ContactPerson">@DR.ProgramTypeName</td>
+                    <td data-label="ContactPerson">@DR.ContactPerson</td>
+                    <td data-label="ProgramType">@DR.Area</td>
+                    <td data-label="CompanyName_EN">@DR.CompanyName_EN</td>
+                    <td data-label="Email">@DR.Email</td>
+                    <td data-label="ContactNumber">@DR.ContactNumber</td>
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <div class="padding10"></div>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <div class="pagination" data-pageindex="1" data-totalitems="@Model[0].TotalCount"></div>
+            <div class="pageof">Displaying items 1 - @Model.Count of @Model[0].TotalCount</div>
+        }
+
+
+    </div>
+
+
+    <div class="clear"></div>
+</div>
+
+<div class="clear"></div>

@@ -1,0 +1,41 @@
+﻿
+@{
+
+    ViewBag.Title = "Error";
+    
+}
+
+<div class="col_1">
+    <div class="rightcontent">
+
+        <div class="container">
+            <div class="cont_sub" align="center">
+                <hgroup>
+                    <h1>Error.</h1>
+                    <h2>An error occurred while processing your request.</h2>
+
+                    @if (ViewData["Error"] != null)
+                    {
+                        <div id="ErrorMsgDiv">
+                            <!--@{
+                            <text> Message : </text> @(((Exception)ViewData["Error"]).Message + "\n")
+                            <text> Source : </text> @(((Exception)ViewData["Error"]).Source + "\n")
+                            <text> Data : </text> @(((Exception)ViewData["Error"]).Data + "\n")
+                            <text> TargetSite : </text> @(((Exception)ViewData["Error"]).TargetSite + "\n")
+                            <text> StackTrace : </text> @(((Exception)ViewData["Error"]).StackTrace + "\n")
+                        }-->
+                        </div>
+
+                    }
+                </hgroup>
+
+                <div class="clear50"></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+
